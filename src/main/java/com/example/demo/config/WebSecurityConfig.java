@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 認証状態によらず許可するURL
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/account/register/**").permitAll()
+                .antMatchers("/user/register/**").permitAll()
                 .anyRequest().authenticated();
 
         http.formLogin()

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー登録</title>
+</head>
+<body>
+<h1>ユーザー登録</h1>
+<form th:action="@{/user/register/do}" th:object="${userRegisterForm}" method="post">
+    <div>
+        <label for="accountId">アカウントID</label><br>
+        <p th:text="*{accountId}"></p>
+        <input type="hidden" id="accountId" th:value="*{accountId}" name="accountId"/>
+        <input type="hidden" name="password" id="password" th:value="*{password}"/>
+    </div>
+    <div>
+        <input type="submit" name="register" value="登録" />
+        <input type="submit" name="registerBack" value="戻る" />
+    </div>
+</form>
+</body>
+</html>
