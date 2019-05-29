@@ -28,5 +28,5 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-### application.properties ###
-application.properties
+# application.properties
+/Users/umegakikeisuke/MyProjects/SpringBoot/SpringBoot_demo/src/main/resources/*.properties
