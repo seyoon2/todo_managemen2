@@ -1,0 +1,1 @@
+drop DATABASE my_demo;
