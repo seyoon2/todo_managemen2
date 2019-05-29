@@ -8,12 +8,13 @@
 <h1>ユーザー登録</h1>
 <form th:action="@{/user/register/do}" th:object="${userRegisterForm}" method="post">
     <div>
-        <label for="accountId">アカウントID</label><br>
+        <label>アカウントID</label><br>
         <p th:text="*{accountId}"></p>
-        <input type="hidden" id="accountId" th:value="*{accountId}" name="accountId"/>
-        <input type="hidden" name="password" id="password" th:value="*{password}"/>
     </div>
     <div>
+        <input type="hidden" name="accountId" id="accountId" th:value="*{accountId}" />
+        <input type="hidden" name="password" id="password" th:value="*{password}"/>
+        <input type="hidden" name="confirmPassword" id="confirmPassword" th:value="*{confirmPassword}"/>
         <input type="submit" name="register" value="登録" />
         <input type="submit" name="registerBack" value="戻る" />
     </div>

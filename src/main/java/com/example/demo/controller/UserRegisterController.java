@@ -63,14 +63,13 @@ public class UserRegisterController {
      * ユーザー登録-完了画面表示。
      *
      * @param userRegisterForm 精査済みフォーム
-     * @param bindingResult       精査結果
+     * @param bindingResult    精査結果
      * @return Path
      */
     @RequestMapping(value = "/do", params = "register", method = RequestMethod.POST)
     String registerComplete(@ModelAttribute @Validated UserRegisterForm userRegisterForm, BindingResult bindingResult) {
         // BeanValidationのエラー確認
         if (bindingResult.hasErrors()) {
-            // TODO:なにかしらのエラーが発生して登録ができない。エラーメッセージを実装する。
             return "user/userRegisterForm";
         }
         // 登録するアカウントの作成

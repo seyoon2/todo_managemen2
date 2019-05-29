@@ -13,11 +13,11 @@ public class UserRegisterForm implements Serializable {
     @NotBlank
     @Size(min = 3, max = 20, message = "error.size.min.max")
     private String accountId;
-    //    @HalfAlphameric TODO: 自作アノテーション
+    //    @HalfAlphameric TODO: 自作アノテーションがどこにあるか探す
 
     @NotBlank
     private String password;
-    //    @Password TODO: 自作アノテーション
+    //    @Password TODO: 自作アノテーションがどこにあるか探す
 
     @NotBlank
     private String confirmPassword;

@@ -49,6 +49,7 @@ public class UserRegisterService {
      * @param accountId 精査対象のアカウントID
      * @return true:未存在 false:存在
      */
+    // TODO: readonly が赤色になる
     @Transactional
     public boolean isExistsAccountId(String accountId) {
         int result = userRepository.countByAccountId(accountId);
