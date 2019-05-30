@@ -34,6 +34,7 @@ public class UserRegisterService {
      * @param user        登録対象のユーザー
      * @param rawPassword 暗号化前のパスワード
      */
+    @Transactional
     public void register(User user, String rawPassword) {
         // パスワードの暗号化
         String encodedPassword = passwordEncoder.encode(rawPassword);

@@ -15,8 +15,8 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
      * @param accountId アカウントID
      * @return ユーザー
      */
-    @Query(value = "SELECT * FROM users WHERE accountid = :accountid", nativeQuery = true)
-    User findByAccountId(@Param("accountid") String accountId);
+    @Query(value = "SELECT * FROM users WHERE account_id = :account_id", nativeQuery = true)
+    User findByAccountId(@Param("account_id") String accountId);
 
     /**
      * アカウントIDに紐づくユーザーの件数を取得する。
@@ -24,8 +24,8 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
      * @param accountId アカウントID
      * @return 件数
      */
-    @Query(value = "SELECT COUNT(*) FROM users WHERE accountid = :accountid", nativeQuery = true)
-    int countByAccountId(@Param("accountid") String accountId);
+    @Query(value = "SELECT COUNT(*) FROM users WHERE account_id = :account_id", nativeQuery = true)
+    int countByAccountId(@Param("account_id") String accountId);
 
     /**
      * 全アカウントを検索する。

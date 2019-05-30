@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>投稿</title>
+</head>
+<body>
+<h1>投稿</h1>
+<form th:action="@{/post/register/confirm}" th:object="${postRegisterForm}" method="post">
+    <div>
+        <label for="title">タイトル</label><br>
+        <input type="text" id="title" maxlength="45" th:field="*{title}" name="title" placeholder="タイトル" autofocus required/>
+    </div>
+    <div>
+        <label for="detail">本文</label><br>
+        <textarea type="text" id="detail" name="detail" th:field="*{detail}" placeholder="本文" required />
+    </div>
+    <div>
+        <input type="submit" value="投稿" />
+    </div>
+</form>
+</body>
+</html>

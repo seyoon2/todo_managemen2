@@ -14,7 +14,7 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "accountid", nullable = false, unique = true)
+    @Column(name = "account_id", nullable = false, unique = true)
     private String accountId;
 
     @Column(name = "password", nullable = false, length =  20)
