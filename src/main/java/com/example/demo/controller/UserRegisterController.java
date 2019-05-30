@@ -70,7 +70,6 @@ public class UserRegisterController {
     String registerComplete(@ModelAttribute @Validated UserRegisterForm userRegisterForm, BindingResult bindingResult) {
         // BeanValidationのエラー確認
         if (bindingResult.hasErrors()) {
-            // TODO:なにかしらのエラーが発生して登録ができない。エラーメッセージを実装する。
             return "user/userRegisterForm";
         }
         // 登録するアカウントの作成

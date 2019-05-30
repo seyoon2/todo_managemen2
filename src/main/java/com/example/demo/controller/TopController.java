@@ -52,7 +52,6 @@ public class TopController {
             User sessionUser = service.getAccountById(user.getId());
             session.setAttribute(SESSION_FORM_ID, sessionUser);
         }
-
         return "top/topForm";
     }
 }
