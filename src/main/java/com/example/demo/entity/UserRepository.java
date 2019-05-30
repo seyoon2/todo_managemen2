@@ -10,23 +10,22 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User> {
 
     /**
-     * アカウントIDに紐づくアカウントを検索する。
+     * アカウントIDに紐づくユーザーを検索する。
      *
      * @param accountId アカウントID
-     * @return アカウント
+     * @return ユーザー
      */
-    // TODO: Todo_managementでは、delete_flagはどうなっているか確認
-    @Query(value = "SELECT * FROM users WHERE accountId = :accountId", nativeQuery = true)
-    User findByAccountId(@Param("accountId") String accountId);
+    @Query(value = "SELECT * FROM users WHERE accountid = :accountid", nativeQuery = true)
+    User findByAccountId(@Param("accountid") String accountId);
 
     /**
-     * アカウントIDに紐づくアカウントの件数を取得する。
+     * アカウントIDに紐づくユーザーの件数を取得する。
      *
      * @param accountId アカウントID
      * @return 件数
      */
-    @Query(value = "SELECT COUNT(*) FROM users WHERE accountId = :accountId", nativeQuery = true)
-    int countByAccountId(@Param("accountId") String accountId);
+    @Query(value = "SELECT COUNT(*) FROM users WHERE accountid = :accountid", nativeQuery = true)
+    int countByAccountId(@Param("accountid") String accountId);
 
     /**
      * 全アカウントを検索する。

@@ -14,46 +14,12 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "accountId", nullable = false, unique = true)
+    @Column(name = "accountid", nullable = false, unique = true)
     private String accountId;
 
     @Column(name = "password", nullable = false, length =  20)
     private String password;
 
-    /**
-     * Getter
-     */
-    public int getId() {
-        return id;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Setter
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     *  Override Method
-     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -61,26 +27,51 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return this.accountId;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

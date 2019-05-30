@@ -12,7 +12,7 @@
         <p th:text="*{accountId}"></p>
     </div>
     <div>
-        <input type="hidden" name="accountId" id="accountId" th:value="*{accountId}" />
+        <input type="hidden" id="accountId" th:value="*{accountId}" name="accountId"/>
         <input type="hidden" name="password" id="password" th:value="*{password}"/>
         <input type="hidden" name="confirmPassword" id="confirmPassword" th:value="*{confirmPassword}"/>
         <input type="submit" name="register" value="登録" />

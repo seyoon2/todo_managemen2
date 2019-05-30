@@ -5,8 +5,7 @@ import com.example.demo.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * ユーザー登録サービス。
@@ -49,8 +48,7 @@ public class UserRegisterService {
      * @param accountId 精査対象のアカウントID
      * @return true:未存在 false:存在
      */
-    // TODO: readonly が赤色になる
-    @Transactional
+    @Transactional(readOnly = true)
     public boolean isExistsAccountId(String accountId) {
         int result = userRepository.countByAccountId(accountId);
         return result != 0;
