@@ -1,5 +1,8 @@
 package com.example.demo.form;
 
+import com.example.demo.validator.HalfAlphameric;
+import com.example.demo.validator.Password;
+
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -12,12 +15,12 @@ import java.util.Objects;
 public class UserRegisterForm implements Serializable {
     @NotBlank
     @Size(min = 3, max = 20, message = "error.size.min.max")
+    @HalfAlphameric
     private String accountId;
-    //    @HalfAlphameric TODO: 自作アノテーション
 
     @NotBlank
+    @Password
     private String password;
-    //    @Password TODO: 自作アノテーション
 
     @NotBlank
     private String confirmPassword;
