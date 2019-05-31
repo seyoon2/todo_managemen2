@@ -15,6 +15,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `title` varchar(45) NOT NULL,
       `detail` text NOT NULL,
-      `issue_person_id` int(11) NOT NULL,
+      `poster_id` int(11) NOT NULL,
       PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

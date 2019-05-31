@@ -14,6 +14,9 @@ public class PostRegisterForm {
     @NotBlank
     private String detail;
 
+    /**
+     * Getter & Setter
+     */
     public String getTitle() {
         return title;
     }
@@ -21,6 +24,7 @@ public class PostRegisterForm {
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getDetail() {
         return detail;
     }

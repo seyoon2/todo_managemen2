@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>投稿</title>
+</head>
+<body>
+<h1>投稿</h1>
+<form th:action="@{/post/register/do}" th:object="${postRegisterForm}" method="post">
+    <div>
+        <label>タイトル</label><br>
+        <p th:text="*{title}"></p>
+    </div>
+    <div>
+        <label>本文</label><br>
+        <p th:text="*{detail}"></p>
+    </div>
+    <div>
+        <input type="hidden" id="title" name="title" th:value="*{title}" />
+        <input type="hidden" id="detail" name="detail" th:value="*{detail}" />
+        <input type="submit" name="register" value="投稿" />
+        <input type="submit" name="registerBack" value="戻る" />
+    </div>
+</form>
+</body>
+</html>
