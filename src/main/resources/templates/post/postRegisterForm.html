@@ -9,14 +9,15 @@
 <form th:action="@{/post/register/confirm}" th:object="${postRegisterForm}" method="post">
     <div>
         <label for="title">タイトル</label><br>
-        <input type="text" id="title" maxlength="45" th:field="*{title}" name="title" placeholder="タイトル" autofocus required/>
+        <input type="text" id="title" maxlength="45" th:field="*{title}" name="title" placeholder="タイトル" autofocus
+               required/>
     </div>
     <div>
         <label for="detail">本文</label><br>
         <textarea type="text" id="detail" name="detail" th:field="*{detail}" placeholder="本文" required></textarea>
     </div>
     <div>
-        <input type="submit" value="確認" />
+        <input type="submit" value="確認"/>
     </div>
 </form>
 </body>

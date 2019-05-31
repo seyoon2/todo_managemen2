@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `id` int NOT NULL AUTO_INCREMENT,
     `account_id` varchar(20) NOT NULL,
     `password` char(60) NOT NULL,
+    `delete_flag` tinyint(1) NOT NULL DEFAULT FALSE,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

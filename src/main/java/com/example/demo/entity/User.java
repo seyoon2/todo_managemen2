@@ -20,6 +20,10 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false, length =  20)
     private String password;
 
+    // TODO フラグを設定したがどう動くか未確認
+    @Column(name = "delete_flag")
+    private boolean deleteFlag;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -73,5 +77,13 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }
