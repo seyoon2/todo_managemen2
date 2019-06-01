@@ -7,6 +7,8 @@
 <body>
 <h1>退会手続き</h1>
 <p>退会しますか？確認されたら退会ボタンを押下してください。</p>
-<a th:href="@{user/unsubscribe/confirm}" style="color:red;">確認しました。退会します。</a>
+<form th:action="@{/user/unsubscribe/do}" method="post">
+    <input type="submit" value="確認しました。退会します。"/>
+</form>
 </body>
 </html>

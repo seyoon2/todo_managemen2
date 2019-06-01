@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
      * @param accountId アカウントID
      * @return User ユーザー
      */
-    @Query(value = "SELECT * FROM users WHERE account_id = :account_id", nativeQuery = true)
+    @Query(value = "SELECT * FROM users WHERE account_id = :account_id AND delete_flag = 0", nativeQuery = true)
     User findByAccountId(@Param("account_id") String accountId);
 
     /**
@@ -23,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
      * @param accountId ユーザーID
      * @return 件数
      */
-    @Query(value = "SELECT COUNT(*) FROM users WHERE account_id = :account_id", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM users WHERE account_id = :account_id AND delete_flag = 0", nativeQuery = true)
     int countByAccountId(@Param("account_id") String accountId);
 
     /**
@@ -31,6 +31,6 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
      *
      * @return 全ユーザーのリスト
      */
-    @Query(value = "SELECT * FROM users", nativeQuery = true)
+    @Query(value = "SELECT * FROM users WHERE delete_flag = 0", nativeQuery = true)
     List<User> findAllAccount();
 }

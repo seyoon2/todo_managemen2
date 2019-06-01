@@ -13,7 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserUnsubscribeService {
 
-    /** アカウントリポジトリ */
+    /**
+     * アカウントリポジトリ
+     */
     private final UserRepository userRepository;
 
     @Autowired
@@ -26,7 +28,6 @@ public class UserUnsubscribeService {
      *
      * @param user 退会対象のアカウント
      */
-    // TODO 動作未確認
     public void delete(User user) {
         user.setDeleteFlag(true);
         userRepository.save(user);

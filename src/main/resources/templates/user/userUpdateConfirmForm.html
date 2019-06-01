@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー更新</title>
+</head>
+<body>
+<h1>ユーザー更新</h1>
+<form th:action="@{/user/update/do}" th:object="${userUpdateForm}" method="post">
+    <div>
+        <label>アカウントID</label><br>
+        <p th:text="*{accountId}"></p>
+    </div>
+    <div>
+        <input type="hidden" name="accountId" th:value="*{accountId}"/>
+        <input type="submit" name="back" value="戻る"/>
+        <input type="submit" name="complete" value="更新"/>
+    </div>
+</form>
+</body>
+</html>

@@ -17,10 +17,9 @@ public class User implements UserDetails {
     @Column(name = "account_id", nullable = false, unique = true)
     private String accountId;
 
-    @Column(name = "password", nullable = false, length =  20)
+    @Column(name = "password", nullable = false, length = 20)
     private String password;
 
-    // TODO フラグを設定したがどう動くか未確認
     @Column(name = "delete_flag")
     private boolean deleteFlag;
 

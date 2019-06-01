@@ -63,7 +63,7 @@ public class UserRegisterController {
      * ユーザー登録-完了画面表示。
      *
      * @param userRegisterForm 精査済みフォーム
-     * @param bindingResult       精査結果
+     * @param bindingResult    精査結果
      * @return Path
      */
     @RequestMapping(value = "/do", params = "register", method = RequestMethod.POST)
@@ -74,10 +74,9 @@ public class UserRegisterController {
         }
         // 登録するアカウントの作成
         User user = new User();
-        user.setAccountId(userRegisterForm.getAccountId());
         // ユーザーの登録
-        service.register(user, userRegisterForm.getPassword());
-        return "user/userRegisterCompleteForm";
+        service.register(user, userRegisterForm.getAccountId(), userRegisterForm.getPassword());
+        return "user/userRegisterComplete";
     }
 
     /**
