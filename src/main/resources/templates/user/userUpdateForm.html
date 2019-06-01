@@ -7,14 +7,20 @@
 <body>
 <h1>ユーザー更新</h1>
 <form th:action="@{/user/update/confirm}" th:object="${userUpdateForm}" method="post">
-    <div>
-        <label>アカウントID</label><br>
-        <input type="text" id="accountId" th:value="*{accountId}" name="accountId"/>
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">共通エラーメッセージ表示エリア</p>
     </div>
-    <div>
-        <a th:href="@{/top}">戻る</a>
-        <input type="submit" value="確認"/>
-    </div>
+    <fieldset>
+        <div th:classappend="${#fields.hasErrors('accountId')}? 'has-error'">
+            <label>アカウントID</label><br>
+            <input type="text" maxlength="20" id="accountId" th:field="*{accountId}" name="accountId" required/>
+            <span th:if="${#fields.hasErrors('accountId')}" th:errors="*{accountId}">error!</span>
+        </div>
+        <div>
+            <a th:href="@{/top}">戻る</a>
+            <input type="submit" value="確認"/>
+        </div>
+    </fieldset>
 </form>
 </body>
 </html>
