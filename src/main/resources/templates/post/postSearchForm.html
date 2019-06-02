@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>投稿検索画面</title>
+</head>
+<body>
+<div>
+    <h1>投稿一覧</h1>
+    <form th:action="@{/post/search/do}" th:object="${postRegisterForm}" method="post">
+        <div>
+            <label>タイトル</label><br>
+            <input type="text" name="title" maxlength="45" th:field="*{title}" placeholder="検索したいタイトルを入力してください">
+        </div>
+        <div>
+            <label>詳細</label><br>
+            <input type="text" name="detail" th:field="*{detail}" placeholder="検索したい詳細を入力してください">
+        </div>
+        <input type="submit" value="検索">
+    </form>
+    <div th:each="post : ${PostList}">
+        <h3 th:text="${post.title}"></h3>
+        <p th:text="${post.detail}"></p>
+    </div>
+</div>
+</body>
+</html>

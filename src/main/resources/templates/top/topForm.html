@@ -20,7 +20,7 @@
         <form th:action="@{/post/delete}" method="post">
             <fieldset>
                 <h3 th:text="${post.title}"></h3>
-                <p th:text="${post.title}"></p>
+                <p th:text="${post.detail}"></p>
                 <input type="hidden" name="postId" th:value="${post.id}">
                 <input type="submit" value="削除">
             </fieldset>

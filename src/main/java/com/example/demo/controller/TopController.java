@@ -14,8 +14,10 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * トップ画面、投稿検索画面
+ */
 @Controller
-@RequestMapping("/top")
 public class TopController {
 
     /**
@@ -24,7 +26,7 @@ public class TopController {
     private final TopService topService;
 
     /**
-     * PostListService
+     * 投稿一覧表示サービス
      */
     private final PostListService postListService;
     /**
@@ -48,7 +50,7 @@ public class TopController {
      *
      * @return Path
      */
-    @RequestMapping(value = "loginSuccess")
+    @RequestMapping(value = "/top/loginSuccess")
     public String loginSuccess() {
         return "redirect:/top";
     }
@@ -61,7 +63,7 @@ public class TopController {
      * @param model モデル
      * @return Path
      */
-    @RequestMapping(value = "")
+    @RequestMapping(value = "/top")
     public String init(@AuthenticationPrincipal User user, Post post, Model model) {
         // セッションユーザーの取得
         User sessionUser = topService.getAccountById(user.getId());
