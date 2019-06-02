@@ -17,8 +17,14 @@
 <div>
     <h1>投稿一覧</h1>
     <div th:each="post : ${PostList}">
-        <h3>[[${post.title}]]</h3>
-        <p>[[${post.detail}]]</p>
+        <form th:action="@{/post/delete}" method="post">
+            <fieldset>
+                <h3 th:text="${post.title}"></h3>
+                <p th:text="${post.title}"></p>
+                <input type="hidden" name="postId" th:value="${post.id}">
+                <input type="submit" value="削除">
+            </fieldset>
+        </form>
     </div>
 </div>
 </body>
