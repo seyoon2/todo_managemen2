@@ -95,7 +95,7 @@ public class PostRegisterController {
         post.setDetail(postRegisterForm.getDetail());
         post.setTitle(postRegisterForm.getTitle());
         // ログインユーザーのIDをフィールドへセット
-        post.setPublisherId(user.getId());
+        post.setPosterId(user.getId());
         service.register(post);
         return "post/postRegisterComplete";
     }

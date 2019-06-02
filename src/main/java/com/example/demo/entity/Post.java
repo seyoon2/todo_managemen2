@@ -16,8 +16,8 @@ public class Post {
     @Column(name = "detail", nullable = false)
     private String detail;
 
-    @Column(name = "publisher_id")
-    private int publisherId;
+    @Column(name = "poster_id")
+    private int posterId;
 
     public int getId() {
         return id;
@@ -43,11 +43,11 @@ public class Post {
         this.detail = detail;
     }
 
-    public int getPublisherId() {
-        return publisherId;
+    public int getPosterId() {
+        return posterId;
     }
 
-    public void setPublisherId(int publisherId) {
-        this.publisherId = publisherId;
+    public void setPosterId(int posterId) {
+        this.posterId = posterId;
     }
 }

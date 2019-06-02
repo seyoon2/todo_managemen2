@@ -5,10 +5,21 @@
     <title>ログイン完了</title>
 </head>
 <body>
-<h1>ようこそ</h1>
-<a th:href="@{/post/register/init}">投稿画面へ</a>
-<a th:href="@{/user/update/init}">アカウント情報編集</a>
-<a th:href="@{/user/password/init}">パスワード変更</a>
-<a th:href="@{/user/unsubscribe/confirm}">退会手続き</a>
+<div>
+    <h1>ようこそ<span th:text="${SessionUserName}"></span>さん</h1>
+</div>
+<div>
+    <a th:href="@{/post/register/init}">投稿画面へ</a>
+    <a th:href="@{/user/update/init}">アカウント情報編集</a>
+    <a th:href="@{/user/password/init}">パスワード変更</a>
+    <a th:href="@{/user/unsubscribe/confirm}">退会手続き</a>
+</div>
+<div>
+    <h1>投稿一覧</h1>
+    <div th:each="post : ${PostList}">
+        <h3>[[${post.title}]]</h3>
+        <p>[[${post.detail}]]</p>
+    </div>
+</div>
 </body>
 </html>
