@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン</title>
+    <title>ログイン完了</title>
 </head>
 <body>
-<h1>ログインに成功しました！！</h1>
+<div>
+    <h1>ようこそ<span th:text="${SessionUserName}"></span>さん</h1>
+</div>
+<div>
+    <a th:href="@{/post/register/init}">投稿画面へ</a>
+    <a th:href="@{/user/update/init}">アカウント情報編集</a>
+    <a th:href="@{/user/password/init}">パスワード変更</a>
+    <a th:href="@{/user/unsubscribe/confirm}">退会手続き</a>
+</div>
+<div>
+    <h1>投稿一覧</h1>
+    <div th:each="post : ${PostList}">
+        <form th:action="@{/post/delete}" method="post">
+            <fieldset>
+                <h3 th:text="${post.title}"></h3>
+                <p th:text="${post.title}"></p>
+                <input type="hidden" name="postId" th:value="${post.id}">
+                <input type="submit" value="削除">
+            </fieldset>
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Post;
 import com.example.demo.entity.User;
+import com.example.demo.service.PostListService;
 import com.example.demo.service.TopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -9,22 +11,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
 @RequestMapping("/top")
 public class TopController {
 
-    /** TopService */
-    private final TopService service;
-    /** HTTPセッション */
+    /**
+     * TopService
+     */
+    private final TopService topService;
+
+    /**
+     * PostListService
+     */
+    private final PostListService postListService;
+    /**
+     * HTTPセッション
+     */
     private final HttpSession session;
-    /** セッションキー(ログインユーザのアカウント) */
+    /**
+     * セッションキー(ログインユーザのアカウント)
+     */
     private static final String SESSION_FORM_ID = "account";
 
     @Autowired
-    public TopController(TopService topService, HttpSession session) {
-        this.service = topService;
+    public TopController(TopService topService, PostListService postListService, HttpSession session) {
+        this.topService = topService;
+        this.postListService = postListService;
         this.session = session;
     }
 
@@ -41,17 +56,25 @@ public class TopController {
     /**
      * トップ画面表示。
      *
-     * @param user 認証されたアカウント
+     * @param user  認証されたアカウント
+     * @param post  セッションユーザーの投稿
      * @param model モデル
      * @return Path
      */
     @RequestMapping(value = "")
-    public String init(@AuthenticationPrincipal User user, Model model) {
+    public String init(@AuthenticationPrincipal User user, Post post, Model model) {
+        // セッションユーザーの取得
+        User sessionUser = topService.getAccountById(user.getId());
         // 初回のアクセスなら、アカウントを検索してセッションに格納する
         if (Objects.isNull(session.getAttribute(SESSION_FORM_ID))) {
-            User sessionUser = service.getAccountById(user.getId());
             session.setAttribute(SESSION_FORM_ID, sessionUser);
         }
+        // セッションユーザー名の表示
+        model.addAttribute("SessionUserName", sessionUser.getUsername());
+        // セッションユーザーの投稿取得
+        List<Post> postList = postListService.getPostList(sessionUser);
+        // 投稿一覧の表示
+        model.addAttribute("PostList", postList);
         return "top/topForm";
     }
 }

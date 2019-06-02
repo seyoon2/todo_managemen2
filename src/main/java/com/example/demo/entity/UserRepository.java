@@ -8,30 +8,29 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User> {
-
     /**
      * アカウントIDに紐づくユーザーを検索する。
      *
      * @param accountId アカウントID
-     * @return ユーザー
+     * @return User ユーザー
      */
-    @Query(value = "SELECT * FROM users WHERE accountid = :accountid", nativeQuery = true)
-    User findByAccountId(@Param("accountid") String accountId);
+    @Query(value = "SELECT * FROM users WHERE account_id = :account_id AND delete_flag = 0", nativeQuery = true)
+    User findByAccountId(@Param("account_id") String accountId);
 
     /**
-     * アカウントIDに紐づくユーザーの件数を取得する。
+     * ユーザーIDに紐づくユーザーの件数を取得する。
      *
-     * @param accountId アカウントID
+     * @param accountId ユーザーID
      * @return 件数
      */
-    @Query(value = "SELECT COUNT(*) FROM users WHERE accountid = :accountid", nativeQuery = true)
-    int countByAccountId(@Param("accountid") String accountId);
+    @Query(value = "SELECT COUNT(*) FROM users WHERE account_id = :account_id AND delete_flag = 0", nativeQuery = true)
+    int countByAccountId(@Param("account_id") String accountId);
 
     /**
-     * 全アカウントを検索する。
+     * 全ユーザーを検索する。
      *
-     * @return 全アカウントのリスト
+     * @return 全ユーザーのリスト
      */
-    @Query(value = "SELECT * FROM users", nativeQuery = true)
+    @Query(value = "SELECT * FROM users WHERE delete_flag = 0", nativeQuery = true)
     List<User> findAllAccount();
 }

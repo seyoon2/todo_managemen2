@@ -14,11 +14,14 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "accountid", nullable = false, unique = true)
+    @Column(name = "account_id", nullable = false, unique = true)
     private String accountId;
 
-    @Column(name = "password", nullable = false, length =  20)
+    @Column(name = "password", nullable = false, length = 20)
     private String password;
+
+    @Column(name = "delete_flag")
+    private boolean deleteFlag;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -73,5 +76,13 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }

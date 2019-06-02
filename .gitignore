@@ -27,6 +27,3 @@ HELP.md
 
 ### VS Code ###
 .vscode/
-
-# application.properties
-/SpringBoot_demo/src/main/resources/*.properties

@@ -29,21 +29,28 @@ public class UserRegisterService {
     }
 
     /**
-     * 登録処理。
+     * 登録処理
      *
      * @param user        登録対象のユーザー
+     * @param accountId   アカウントID
      * @param rawPassword 暗号化前のパスワード
      */
     @Transactional
-    public void register(User user, String rawPassword) {
+    public void register(User user, String accountId, String rawPassword) {
+        // アカウントIDをセット
+        user.setAccountId(accountId);
         // パスワードの暗号化
         String encodedPassword = passwordEncoder.encode(rawPassword);
+        // パスワードをセット
         user.setPassword(encodedPassword);
+        // 削除フラグをFALSEでセット
+        user.setDeleteFlag(false);
+        // ユーザーをSQLへ保存
         userRepository.save(user);
     }
 
     /**
-     * アカウントIDの重複精査。
+     * アカウントIDの重複精査
      *
      * @param accountId 精査対象のアカウントID
      * @return true:未存在 false:存在

@@ -74,10 +74,9 @@ public class UserRegisterController {
         }
         // 登録するアカウントの作成
         User user = new User();
-        user.setAccountId(userRegisterForm.getAccountId());
         // ユーザーの登録
-        service.register(user, userRegisterForm.getPassword());
-        return "user/userRegisterCompleteForm";
+        service.register(user, userRegisterForm.getAccountId(), userRegisterForm.getPassword());
+        return "user/userRegisterComplete";
     }
 
     /**

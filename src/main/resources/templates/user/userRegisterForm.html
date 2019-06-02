@@ -9,18 +9,20 @@
 <form th:action="@{/user/register/confirm}" th:object="${userRegisterForm}" method="post">
     <div>
         <label for="accountId">アカウントID</label><br>
-        <input type="text" id="accountId" maxlength="20" th:field="*{accountId}"  name="accountId" placeholder="アカウントID" autofocus required/>
+        <input type="text" id="accountId" maxlength="20" th:field="*{accountId}" name="accountId"
+               placeholder="アカウントID" autofocus required/>
     </div>
     <div>
         <label for="password">パスワード</label><br>
-        <input type="password" id="password" name="password" th:field="*{password}" placeholder="パスワード" required />
+        <input type="password" id="password" name="password" th:field="*{password}" placeholder="パスワード" required/>
     </div>
     <div>
         <label for="confirmPassword">確認パスワード</label><br>
-        <input type="password" id="confirmPassword"maxlength="20" th:field="*{confirmPassword}" name="confirmPassword" placeholder="もう一度、パスワード" required />
+        <input type="password" id="confirmPassword" maxlength="20" th:field="*{confirmPassword}" name="confirmPassword"
+               placeholder="もう一度、パスワード" required/>
     </div>
     <div>
-        <input type="submit" value="登録" />
+        <input type="submit" value="登録"/>
     </div>
 </form>
 </body>
