@@ -4,6 +4,7 @@ import com.example.demo.entity.Post;
 import com.example.demo.entity.PostRepository;
 import com.example.demo.entity.User;
 import com.example.demo.form.PostRegisterForm;
+import com.example.demo.form.PostSearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -47,11 +48,11 @@ public class PostSearchService {
     /**
      * 検索条件から投稿を検索する
      *
-     * @param form
+     * @param postRegisterForm
      * @return 検索結果
      */
     @Transactional(readOnly = true)
-    public List<Post> findPost(PostRegisterForm form) {
+    public List<Post> findPost(PostSearchForm form) {
         return postRepository.findAll(
                 Specification
                         .where(tittleContains(form.getTitle()))
@@ -59,6 +60,11 @@ public class PostSearchService {
         );
     }
 
+    /**
+     *
+     * @param id
+     * @return List<Post>
+     */
     @Transactional(readOnly = true)
     public List<Post> findPostById(int id) {
         return postRepository.findByAccountId(id);
@@ -69,7 +75,7 @@ public class PostSearchService {
      *
      * @return アカウント
      */
-    public User getSesionUser() {
+    public User getSessionUser() {
         return (User) session.getAttribute(SESSION_FORM_ID);
     }
 }

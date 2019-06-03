@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>投稿しました。</h1>
+<a th:href="@{/top}">トップへ</a>
 <div th:object="${postRegisterForm}">
     <h2 th:text="*{title}"></h2>
     <p th:text="*{detail}"></p>

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Post;
 import com.example.demo.entity.User;
 import com.example.demo.form.PostRegisterForm;
+import com.example.demo.form.PostSearchForm;
 import com.example.demo.service.PostSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -42,11 +43,11 @@ public class PostSearchController {
      *
      * @param form
      * @param model
-     * @return
+     * @return path
      */
     @RequestMapping(value = "/init")
-    public String searchInit(@ModelAttribute PostRegisterForm form, Model model) {
-        User sessionUser = postSearchService.getSesionUser();
+    public String searchInit(@ModelAttribute PostSearchForm form, Model model) {
+        User sessionUser = postSearchService.getSessionUser();
         List<Post> postList = postSearchService.findPostById(sessionUser.getId());
         model.addAttribute("PostList", postList);
         return "post/postSearchForm";
@@ -54,32 +55,29 @@ public class PostSearchController {
 
     /**
      * 投稿検索-結果表示
-     * TODO どこかで検索処理が止まっているみたい、うまく検索ができていない
      *
-     * @param postRegisterForm
+     * @param postSearchForm
      * @param bindingResult
      * @param model
-     * @return
+     * @return path
      */
     @RequestMapping(value = "/do", method = RequestMethod.POST)
-    public String search(@ModelAttribute @Validated PostRegisterForm postRegisterForm, BindingResult bindingResult, Model model) {
+    public String search(@ModelAttribute @Validated PostSearchForm postSearchForm, BindingResult bindingResult, Model model) {
         // BeanValidationのエラー確認
         if (bindingResult.hasErrors()) {
             // forwardさせるとエラー情報が消えるので、メソッド呼び出しで処理する。
             // TodoRegisterと同様に、RedirectAttributesに情報を詰めてリダイレクトし、先で取り出してModel.addattributeさせるのでもOK。
-            return this.searchInit(postRegisterForm, model);
+            return this.searchInit(postSearchForm, model);
         }
-
         // 検索処理
-        List<Post> postList = postSearchService.findPost(postRegisterForm);
+        List<Post> postList = postSearchService.findPost(postSearchForm);
         if (Objects.isNull(postList) || postList.isEmpty()) {
             // 結果０件ならエラー表示
             bindingResult.reject("validation.noSearchResult", "default message");
-            return this.searchInit(postRegisterForm, model);
+            return this.searchInit(postSearchForm, model);
         }
-
         // 検索結果の格納
         model.addAttribute("PostList", postList);
-        return "forward:/post/search/init";
+        return "post/postSearchForm";
     }
 }

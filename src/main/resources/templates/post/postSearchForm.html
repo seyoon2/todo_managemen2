@@ -7,7 +7,10 @@
 <body>
 <div>
     <h1>投稿一覧</h1>
-    <form th:action="@{/post/search/do}" th:object="${postRegisterForm}" method="post">
+    <div>
+        <a th:href="@{/top}">トップへ</a>
+    </div>
+    <form th:action="@{/post/search/do}" th:object="${postSearchForm}" method="post">
         <div>
             <label>タイトル</label><br>
             <input type="text" name="title" maxlength="45" th:field="*{title}" placeholder="検索したいタイトルを入力してください">
@@ -19,8 +22,10 @@
         <input type="submit" value="検索">
     </form>
     <div th:each="post : ${PostList}">
-        <h3 th:text="${post.title}"></h3>
-        <p th:text="${post.detail}"></p>
+        <fieldset>
+            <h3 th:text="${post.title}"></h3>
+            <p th:text="${post.detail}"></p>
+        </fieldset>
     </div>
 </div>
 </body>

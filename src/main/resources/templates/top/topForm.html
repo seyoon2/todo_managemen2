@@ -9,10 +9,11 @@
     <h1>ようこそ<span th:text="${SessionUserName}"></span>さん</h1>
 </div>
 <div>
-    <a th:href="@{/post/register/init}">投稿画面へ</a>
-    <a th:href="@{/user/update/init}">アカウント情報編集</a>
-    <a th:href="@{/user/password/init}">パスワード変更</a>
-    <a th:href="@{/user/unsubscribe/confirm}">退会手続き</a>
+    <a th:href="@{/post/register/init}">投稿する</a>
+    <a th:href="@{/user/update/init}">アカウントを更新する</a>
+    <a th:href="@{/post/search/init}">投稿を検索する</a>
+    <a th:href="@{/user/password/init}">パスワードを変更する</a>
+    <a th:href="@{/user/unsubscribe/confirm}" style="color:red;">退会する</a>
 </div>
 <div>
     <h1>投稿一覧</h1>
